@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools==80.9.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "caption-equivalence"
+version = "0.1.0"
+description = "Gate SRT/WebVTT conversions by comparing normalized text across timeline intervals."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{name = "KanadeK"}]
+dependencies = []
+keywords = ["subtitles", "srt", "webvtt", "accessibility", "regression"]
+classifiers = ["Development Status :: 3 - Alpha", "Programming Language :: Python :: 3", "Operating System :: OS Independent", "Topic :: Multimedia :: Video"]
+
+[project.urls]
+Homepage = "https://github.com/KanadeK/caption-equivalence"
+Issues = "https://github.com/KanadeK/caption-equivalence/issues"
+
+[project.scripts]
+caption-equivalence = "caption_equivalence.cli:main"
+
+[project.optional-dependencies]
+dev = ["build==1.6.1", "ruff==0.17.2", "coverage==7.17.0"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.coverage.run]
+branch = true
+source = ["caption_equivalence"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 85
